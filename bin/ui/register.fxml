@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="658.0" prefWidth="491.0" style="-fx-background-color: beige;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label alignment="CENTER" layoutX="128.0" layoutY="74.0" prefHeight="35.0" prefWidth="235.0" text="Create your account">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="prueba" layoutX="175.0" layoutY="47.0" text="Join to Classroom">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="97.0" layoutY="125.0" text="Username:">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtFUsername" layoutX="203.0" layoutY="125.0" prefHeight="31.0" prefWidth="229.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      <Label layoutX="103.0" layoutY="169.0" text="Password:">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="txtPassword" layoutX="203.0" layoutY="169.0" prefHeight="16.0" prefWidth="229.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </PasswordField>
+      <PasswordField fx:id="txtCPassword" layoutX="203.0" layoutY="209.0" prefHeight="16.0" prefWidth="229.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </PasswordField>
+      <Label layoutX="23.0" layoutY="209.0" text="Confirm Password:">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Pane layoutX="83.0" layoutY="261.0" prefHeight="25.0" prefWidth="365.0">
+         <children>
+            <RadioButton fx:id="rdbttnMale" layoutX="126.0" mnemonicParsing="false" prefHeight="10.0" prefWidth="72.0" text="Male">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="gender" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="rdbttnFemale" layoutX="198.0" mnemonicParsing="false" text="Female" toggleGroup="$gender">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="rdbttnOther" layoutX="284.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="92.0" text="Other" toggleGroup="$gender">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </RadioButton>
+            <Label layoutX="41.0" layoutY="-3.0" text="Gender:">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="128.0" layoutY="296.0" prefHeight="104.0" prefWidth="304.0">
+         <children>
+            <Label layoutY="6.0" text="Career:">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <CheckBox fx:id="checkSystemE" layoutX="80.0" layoutY="9.0" mnemonicParsing="false" text="Software Engineering">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="checkTelemE" layoutX="80.0" layoutY="40.0" mnemonicParsing="false" text="Telematic Engineering">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="checkIndusE" layoutX="80.0" layoutY="72.0" mnemonicParsing="false" text="Industrial Engineering">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </CheckBox>
+         </children>
+      </Pane>
+      <Label layoutX="113.0" layoutY="413.0" text="Birthday:">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="birthdayBox" layoutX="210.0" layoutY="416.0" prefHeight="31.0" prefWidth="204.0" />
+      <Label layoutX="34.0" layoutY="463.0" text="Favorite Browser:">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="70.0" layoutY="513.0" text="Profile Photo:">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <TextField fx:id="urlPhoto" editable="false" layoutX="210.0" layoutY="513.0" prefHeight="31.0" prefWidth="193.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      <Button layoutX="408.0" layoutY="513.0" mnemonicParsing="false" onAction="#openDirectory" prefHeight="31.0" prefWidth="49.0" style="-fx-background-color: #76F0BC;">
+         <graphic>
+            <ImageView fitHeight="23.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../Boton.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button layoutX="266.0" layoutY="580.0" mnemonicParsing="false" onAction="#createAccount" prefHeight="45.0" prefWidth="158.0" style="-fx-background-color: #76F0BC;" text="Create account">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button layoutX="113.0" layoutY="580.0" mnemonicParsing="false" onAction="#returnToLogin" prefHeight="45.0" prefWidth="125.0" style="-fx-background-color: #76F0BC;" text="Log In">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <ComboBox fx:id="browserBox" layoutX="210.0" layoutY="466.0" prefHeight="31.0" prefWidth="204.0" />
+   </children>
+</Pane>
