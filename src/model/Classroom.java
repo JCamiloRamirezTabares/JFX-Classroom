@@ -25,6 +25,21 @@ public class Classroom {
 		
 	}
 	
+	public int login(String user, String pass) {
+		
+		int index = -1;
+		boolean sentinel = false;
+		
+		for(int i = 0; i < list.size() && !sentinel; i++) {
+			if(list.get(i).getUserName().equals(user) && list.get(i).getPassword().equals(pass)) { 
+				sentinel = true;
+				index = i;
+			}
+		}
+		
+		return index;
+	}
+	
 	
 	
 	//getter Method

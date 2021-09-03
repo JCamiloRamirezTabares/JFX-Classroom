@@ -4,10 +4,10 @@ import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,7 +22,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
 import model.Classroom;
 import model.UserAccount;
 
@@ -47,7 +51,7 @@ public class ClassroomGUI {
      private TableColumn<UserAccount, String> tcBrowser;
 
      @FXML
-     private Label profilePhoto;
+     private ImageView profilePhoto;
 
      @FXML
      private Label profileName;
@@ -101,6 +105,8 @@ public class ClassroomGUI {
      private Pane mainPane;
      
      private Classroom classroom;
+     
+     private ObservableList<UserAccount> Olist;
      
      @FXML
      private Label prueba;
@@ -167,7 +173,7 @@ public class ClassroomGUI {
     	 } else {
     		 JOptionPane.showMessageDialog(null, "The passwords is not match");
     	 }
-    	 
+    	  //seteo de prueba
     	 prueba.setText(verify);
     	 
      }
@@ -189,11 +195,41 @@ public class ClassroomGUI {
     }
 	
 	@FXML
-    public void login(ActionEvent event) {
+    public void login(ActionEvent event) throws IOException {
 		
 		String user = txtUser.getText();
 		String pass = txtPass.getText();
 		
+		if(user.equals("")||pass.equals("")) {
+			JOptionPane.showMessageDialog(null, "Please fill in all the required fields");
+		} else {
+			int index = classroom.login(user, pass);
+			
+			if(index != -1) {
+				
+				FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("account-list.fxml"));
+		    	fxmlloader.setController(this);
+		    	Parent log = fxmlloader.load();
+		    	mainPane.getChildren().setAll(log);
+		    	
+		    	initializeTableView();
+		    	File file = new File(classroom.getList().get(index).getUrlPhoto());
+		    	Image image = new Image(file.toURI().toString());
+		    	profilePhoto.setImage(image);
+		    	
+		    	profileName.setText("Bienvenid@ " + classroom.getList().get(index).getUserName());
+				
+			} else {
+				JOptionPane.showMessageDialog(null, "The user is not registered");
+			}
+		}
+		
+		
+    }
+	
+	@FXML
+    void logOut(ActionEvent event) throws IOException {
+		startLoginMenu();
     }
 	
 	@FXML
@@ -201,17 +237,14 @@ public class ClassroomGUI {
 		
 		String path = null;
 		
-		JFileChooser chooser = new JFileChooser();
-		chooser.setCurrentDirectory(new File(System.getProperty("user.home")));
-		FileNameExtensionFilter filter = new FileNameExtensionFilter("*Images", "jpg", "png", "jpeg");
-		chooser.addChoosableFileFilter(filter);
+		FileChooser chooser = new FileChooser();
+		FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Image Files", ".jpg", ".png");
+		chooser.getExtensionFilters().add(filter);
+		File file = chooser.showOpenDialog(null);
 		
-		int fileState = chooser.showSaveDialog(null);
-		
-		if(fileState == JFileChooser.APPROVE_OPTION) {
+		if(file != null) {
 			
-			File selectedImage = chooser.getSelectedFile();
-			path = selectedImage.getAbsolutePath();
+			path = file.getAbsolutePath();
 			urlPhoto.setText(path);
 			
 		}
@@ -225,9 +258,17 @@ public class ClassroomGUI {
     	mainPane.getChildren().setAll(log);
 	}
 	
-	public void initializeTableView() {
-		
-	}
+	private void initializeTableView() {
+    	Olist = FXCollections.observableArrayList(classroom.getList());
+    	
+    	tvAccountList.setItems(Olist);
+    	tcUsername.setCellValueFactory(new PropertyValueFactory<UserAccount,String>("userName"));
+    	tcGender.setCellValueFactory(new PropertyValueFactory<UserAccount,String>("gender"));
+    	tcCareer.setCellValueFactory(new PropertyValueFactory<UserAccount,String>("career"));
+    	tcBirthday.setCellValueFactory(new PropertyValueFactory<UserAccount,String>("birthday"));
+    	tcBrowser.setCellValueFactory(new PropertyValueFactory<UserAccount,String>("browser"));
+    
+    }
 	
 	public boolean verifyIfThereEmptyFields(String item1, String item2, String item3, String item4, String item5, String item6, String item7, String item8) {
 		if(item1.equals("")||item2.equals("")||item3.equals("")||item4.equals("")||item5.equals("")||item6.equals("")||item7.equals("")||item8.equals("")) {

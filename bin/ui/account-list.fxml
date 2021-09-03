@@ -5,31 +5,32 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="717.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="737.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="182.0" layoutY="132.0" text="USER ACCOUNT LIST">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <VBox layoutX="24.0" layoutY="204.0" prefHeight="346.0" prefWidth="670.0">
+      <VBox layoutX="24.0" layoutY="204.0" prefHeight="346.0" prefWidth="688.0">
          <children>
-            <TableView fx:id="tvAccountList" prefHeight="350.0" prefWidth="670.0" style="-fx-background-color: #A6F0CF;">
+            <TableView fx:id="tvAccountList" prefHeight="346.0" prefWidth="702.0">
               <columns>
-                <TableColumn fx:id="tcUsername" prefWidth="100.0" style="-fx-background-color: #E7FAF1;" text="USERNAME" />
-                <TableColumn fx:id="tcGender" prefWidth="98.0" style="-fx-background-color: #E7FAF1;" text="GENDER" />
-                  <TableColumn fx:id="tcCareer" prefWidth="193.0" style="-fx-background-color: #E7FAF1;" text="CAREER" />
-                  <TableColumn fx:id="tcBirthday" prefWidth="95.0" style="-fx-background-color: #E7FAF1;" text="BIRTHDAY" />
-                  <TableColumn fx:id="tcBrowser" prefWidth="183.0" style="-fx-background-color: #E7FAF1;" text="BROWSER" />
+                <TableColumn fx:id="tcUsername" prefWidth="100.0" text="USERNAME" />
+                <TableColumn fx:id="tcGender" prefWidth="98.0" text="GENDER" />
+                  <TableColumn fx:id="tcCareer" prefWidth="220.0" text="CAREER" />
+                  <TableColumn fx:id="tcBirthday" prefWidth="103.0" text="BIRTHDAY" />
+                  <TableColumn fx:id="tcBrowser" prefWidth="166.0" text="BROWSER" />
               </columns>
             </TableView>
          </children>
       </VBox>
-      <Button layoutX="537.0" layoutY="45.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="132.0" style="-fx-background-color: #A6F0CF;" text="Log out">
+      <Button layoutX="564.0" layoutY="45.0" mnemonicParsing="false" onAction="#logOut" prefHeight="39.0" prefWidth="132.0" style="-fx-background-color: #A6F0CF;" text="Log out">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
@@ -37,10 +38,13 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label fx:id="profilePhoto" layoutX="420.0" layoutY="24.0" prefHeight="91.0" prefWidth="107.0" />
-      <Label fx:id="profileName" layoutX="298.0" layoutY="45.0" prefHeight="32.0" prefWidth="84.0" text="NAME">
+      <Label layoutX="424.0" layoutY="32.0" prefHeight="91.0" prefWidth="107.0">
+         <graphic>
+            <ImageView fx:id="profilePhoto" fitHeight="82.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true" />
+         </graphic></Label>
+      <Label fx:id="profileName" layoutX="125.0" layoutY="49.0" prefHeight="34.0" prefWidth="291.0" text="NAME">
          <font>
-            <Font size="22.0" />
+            <Font name="System Bold" size="23.0" />
          </font>
       </Label>
    </children>
