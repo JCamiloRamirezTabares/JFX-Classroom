@@ -108,8 +108,6 @@ public class ClassroomGUI {
      
      private ObservableList<UserAccount> Olist;
      
-     @FXML
-     private Label prueba;
 
      //Constructor Method
      public ClassroomGUI() {
@@ -118,8 +116,6 @@ public class ClassroomGUI {
 
 	@FXML
      public void createAccount(ActionEvent event) {
-    	 String verify = "";
-    	 
     	 String username = txtFUsername.getText();
     	 String password = txtPassword.getText();
     	 String password2 = txtCPassword.getText();
@@ -160,8 +156,6 @@ public class ClassroomGUI {
     	 
     	 String urlPicture = urlPhoto.getText();
     	 
-    	 verify = username + password + password2 + genderSelected + careerSelected + birthday + favoriteBrowser + urlPicture;
-    	 
     	 if(verifyIfThereEmptyFields(username, password, password2, genderSelected, careerSelected, birthday, favoriteBrowser, urlPicture)) {
              JOptionPane.showMessageDialog(null, "Please fill in all the required fields");
     	 } else if(password.equals(password2)){
@@ -173,8 +167,7 @@ public class ClassroomGUI {
     	 } else {
     		 JOptionPane.showMessageDialog(null, "The passwords is not match");
     	 }
-    	  //seteo de prueba
-    	 prueba.setText(verify);
+    	 
     	 
      }
      
