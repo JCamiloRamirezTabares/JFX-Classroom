@@ -231,7 +231,7 @@ public class ClassroomGUI {
 		String path = null;
 		
 		FileChooser chooser = new FileChooser();
-		FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Image Files", ".jpg", ".png");
+		FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("*Image Files", "*jpg", "*png");
 		chooser.getExtensionFilters().add(filter);
 		File file = chooser.showOpenDialog(null);
 		
